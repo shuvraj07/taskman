@@ -1,6 +1,5 @@
 import express from 'express';
 import dotenv from "dotenv";
-import passport from 'passport';
 //import testDatabaseConnection from './db/db.js';
 //import taskRoute from './route/taskRoute';
 import { syncDatabase } from './model/registerModel.js';
@@ -22,15 +21,6 @@ app.get('/', (req, res) => {
 });
 
 
-app.get("/protect", passport.authenticate("jwt", { session: false }), (req, res) => {
-  const authenticatedUser = req.user;
-
-  if (authenticatedUser) {
-    res.status(200).json({email:authenticatedUser.email,password:authenticatedUser.password, address:authenticatedUser.address });
-  } else {
-    res.status(401).json({ message: "you need to login to get that information" });
-  }
-});
 
 
 syncDatabase().then(() => {
