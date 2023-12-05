@@ -1,7 +1,5 @@
 import express from 'express';
 import dotenv from "dotenv";
-//import testDatabaseConnection from './db/db.js';
-//import taskRoute from './route/taskRoute';
 import { syncDatabase } from './model/registerModel.js';
 const app = express();
 import router from './route/taskRoute.js'
